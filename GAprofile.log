@@ -1,0 +1,67 @@
+Wrote profile results to GAProfile.py.lprof
+Timer unit: 1e-06 s
+
+Total time: 0.001478 s
+File: GAProfile.py
+Function: judge at line 138
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   138                                           @profile
+   139                                           def judge(obj):
+   140                                               """ 入力値の型を判定する """
+   141       900        541.0      0.6     36.6      if isinstance(obj, int):
+   142       517        186.0      0.4     12.6          return 1
+   143                                           
+   144       383        245.0      0.6     16.6      if isinstance(obj, float):
+   145        42         17.0      0.4      1.2          return 1
+   146                                           
+   147       341        207.0      0.6     14.0      if isinstance(obj, list):
+   148                                                   return 2
+   149                                           
+   150       341        182.0      0.5     12.3      if isinstance(obj, str):
+   151       312        100.0      0.3      6.8          return 3
+
+Total time: 0.000607 s
+File: GAProfile.py
+Function: calc at line 153
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   153                                           @profile
+   154                                           def calc(list):
+   155                                           
+   156       249        115.0      0.5     18.9      if list[2] == "plus":
+   157        17         10.0      0.6      1.6          result = list[0]+list[1]
+   158       232        107.0      0.5     17.6      elif list[2] == "minus":
+   159        11          7.0      0.6      1.2          result = list[0]-list[1]
+   160       221         96.0      0.4     15.8      elif list[2] == "multiply":
+   161        12          7.0      0.6      1.2          result = list[0]*list[1]
+   162       209         85.0      0.4     14.0      elif list[2] == "divide":
+   163        27         14.0      0.5      2.3          if list[1] == 0:
+   164         2          0.0      0.0      0.0              result = "Do not divide by 0."
+   165                                                   else:
+   166        25         11.0      0.4      1.8              result = list[0]/list[1]      
+   167                                               else:
+   168       182         74.0      0.4     12.2          result = "Operator is invalid."
+   169       249         81.0      0.3     13.3      return result
+
+Total time: 0.006155 s
+File: GAProfile.py
+Function: main at line 171
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   171                                           @profile
+   172                                           def main():
+   173       301        126.0      0.4      2.0      for i in kids:
+   174       300       1189.0      4.0     19.3          judgeValue0 = judge(i[0])
+   175       300       1142.0      3.8     18.6          judgeValue1 = judge(i[1])
+   176       300       1922.0      6.4     31.2          judgeValue2 = judge(i[2])
+   177                                                   
+   178       300        142.0      0.5      2.3          if judgeValue0 == 1 and judgeValue1 == 1 and judgeValue2 == 3:
+   179       249       1616.0      6.5     26.3              output = calc(i)
+   180                                           
+   181                                                   else:
+   182        51         18.0      0.4      0.3              output = "error"
+
